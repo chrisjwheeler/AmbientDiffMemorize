@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and results
+logs/
+log/
+*.log
+results/
+output/
+*.out
+
+# Dataset/cache files
+*.pickle
+*.pkl
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.pt
+
+# Model checkpoints
+checkpoints/
+*.ckpt
+*.pth
+*.pth.tar
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Misc
+*.swp
+*.bak
+*.tmp
+*.temp
+
+# Ignore local configuration files
+*.local
+.env
+.env.*
