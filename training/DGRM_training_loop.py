@@ -92,7 +92,7 @@ def training_loop(
             images = torch.zeros([batch_gpu, net.img_channels, net.img_resolution, net.img_resolution], device=device)
             sigma = torch.ones([batch_gpu], device=device)
             labels = torch.zeros([batch_gpu, net.label_dim], device=device)
-            misc.print_module_summary(net, [images, sigma, labels], max_nesting=2, verbose=dist.get_rank() == 0)
+            misc.print_module_summary(net, [images, sigma, labels], max_nesting=2) #, verbose=dist.get_rank() == 0
             
     # Setup optimizer.
     dist.print0('Setting up optimizer...')

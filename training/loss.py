@@ -10,6 +10,7 @@
 
 import torch
 from torch_utils import persistence
+from torch_utils import ambient_utils
 
 #----------------------------------------------------------------------------
 # Loss function corresponding to the variance preserving (VP) formulation

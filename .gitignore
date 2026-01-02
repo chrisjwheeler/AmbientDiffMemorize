@@ -57,3 +57,5 @@ checkpoints/
 *.local
 .env
 .env.*
+
+datasets/

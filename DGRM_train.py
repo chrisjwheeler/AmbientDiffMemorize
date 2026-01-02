@@ -16,7 +16,7 @@ import torch
 import dnnlib
 from torch_utils import distributed as dist
 from torch_utils import ambient_utils
-from training import training_loop
+from training import DGRM_training_loop as training_loop
 import warnings
 import wandb
 import string
@@ -149,13 +149,13 @@ def main(**kwargs):
         c.network_kwargs.update(channel_mult_noise=1, resample_filter=[1,1], model_channels=128, channel_mult=[2,2,2])
     elif opts.arch == 'ncsnpp':
         c.network_kwargs.update(model_type='SongUNet', embedding_type='fourier', encoder_type='residual', decoder_type='standard')
-        c.network_kwargs.update(channel_mult_noise=2, resample_filter=[1,3,3,1], model_channels=128, channel_mult=[2,2,2])
+        c.network_kwargs.update(channel_mult_noise=2, resample_filter=[1,3,3,1], model_channels=64, channel_mult=[1, 2, 4])
     else:
         assert opts.arch == 'adm'
         c.network_kwargs.update(model_type='DhariwalUNet', model_channels=192, channel_mult=[1,2,3,4])
         
     assert opts.precond == 'edm'
-    c.network_kwargs.class_name = 'training.networks.EDMPrecond'
+    c.network_kwargs.class_name = 'training.DGRM_networks.EDMPrecond'
     
     if opts.loss_type == 'edm':
         c.loss_kwargs.class_name = 'training.loss.EDMLoss'
