@@ -70,10 +70,10 @@ def parse_int_list(s):
 @click.option('--lr',            help='Learning rate', metavar='FLOAT',                             type=click.FloatRange(min=0, min_open=True), default=10e-4, show_default=True)
 @click.option('--ema',           help='EMA half-life', metavar='MIMG',                              type=click.FloatRange(min=0), default=0.5, show_default=True)
 @click.option('--dropout',       help='Dropout probability', metavar='FLOAT',                       type=click.FloatRange(min=0, max=1), default=0.13, show_default=True)
-@click.option('--augment',       help='Augment probability', metavar='FLOAT',                       type=click.FloatRange(min=0, max=1), default=0.12, show_default=True)
+@click.option('--augment',       help='Augment probability', metavar='FLOAT',                       type=click.FloatRange(min=0, max=1), default=0, show_default=True)
 @click.option('--xflip',         help='Enable dataset x-flips', metavar='BOOL',                     type=bool, default=False, show_default=True)
 @click.option('--optimizer', help='Optimizer', metavar='adamw|adam',           type=click.Choice(['adamw', 'adam']), default='adam', show_default=True)
-@click.option('--weight_decay', help='Weight decay', metavar='FLOAT',          type=float, default=0.01)
+@click.option('--weight_decay', help='Weight decay', metavar='FLOAT',          type=float, default=0.0)
 
 # Performance-related.
 @click.option('--fp16',          help='Enable mixed-precision training', metavar='BOOL',            type=bool, default=False, show_default=True)
@@ -149,7 +149,7 @@ def main(**kwargs):
         c.network_kwargs.update(channel_mult_noise=1, resample_filter=[1,1], model_channels=128, channel_mult=[2,2,2])
     elif opts.arch == 'ncsnpp':
         c.network_kwargs.update(model_type='SongUNet', embedding_type='fourier', encoder_type='residual', decoder_type='standard')
-        c.network_kwargs.update(channel_mult_noise=2, resample_filter=[1,3,3,1], model_channels=64, channel_mult=[1, 2, 4])
+        c.network_kwargs.update(channel_mult_noise=2, resample_filter=[1,3,3,1], model_channels=16, channel_mult=[2,2,2])
     else:
         assert opts.arch == 'adm'
         c.network_kwargs.update(model_type='DhariwalUNet', model_channels=192, channel_mult=[1,2,3,4])
