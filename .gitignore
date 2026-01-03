@@ -20,6 +20,7 @@ Thumbs.db
 
 # Logs and results
 logs/
+logs_exp2/
 log/
 *.log
 results/
